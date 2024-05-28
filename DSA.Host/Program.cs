@@ -1,4 +1,5 @@
-﻿using DSA.Host.Linklist;
+﻿using DSA.Host.BinaryTree;
+using DSA.Host.Linklist;
 
 namespace DSA.Host;
 
@@ -8,7 +9,11 @@ internal class Program
     {
         Console.WriteLine("Hello, World!");
 
-        new Node().Run();
+        //LinkList
+        //new Node().Run();
+
+        //BinaryTree
+        new TreeHelper().Run();
 
         Console.ReadLine();
     }

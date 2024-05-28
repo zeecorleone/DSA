@@ -1,0 +1,172 @@
+﻿/*
+
+***********************************************************
+     * Complete the 'diagonalDifference' function below.
+     *
+     * The function is expected to return an INTEGER.
+     * The function accepts 2D_INTEGER_ARRAY arr as parameter.
+     
+
+    public static int diagonalDifference(List<List<int>> arr)
+    {
+        int sumLeft = 0;
+        int sumRight = 0;
+        for(int i = 0; i < arr.Count; i++)
+        {
+            sumLeft += arr[i][i];
+            sumRight += arr[i][arr.Count - 1 - i];
+        }
+        
+        int diff = sumLeft - sumRight;
+        if(diff < 0)
+            diff = diff * (-1);
+            
+        return diff; 
+    }
+--************************************************************
+
+
+You have two strings of lowercase English letters. You can perform two types of operations on the first string:
+
+Append a lowercase English letter to the end of the string.
+Delete the last character of the string. Performing this operation on an empty string results in an empty string.
+Given an integer k, and two strings,  s and  t, determine whether or not you can convert s to t by performing exactly k of the above operations on s. If it's possible, print Yes. Otherwise, print No.
+
+Sample Input 0
+
+hackerhappy
+hackerrank
+9
+
+Sample Output 0
+
+Yes
+Explanation 0
+
+We perform  5 delete operations to reduce string s to hacker. Next, we perform 4 append operations (i.e., r, a, n, and k), to get hackerrank. Because we were able to convert s to t by performing exactly k=9 operations, we return Yes.
+
+class Result
+{
+
+    
+     * Complete the 'appendAndDelete' function below.
+     *
+     * The function is expected to return a STRING.
+     * The function accepts following parameters:
+     *  1. STRING s
+     *  2. STRING t
+     *  3. INTEGER k
+     
+
+    public static string appendAndDelete(string s, string t, int k)
+    {
+        int commonLength = 0;
+        
+        for(int i = 0; i < System.Math.Min(s.Length, t.Length); i++)
+        {
+            if(s[i] == t[i])
+            {
+                commonLength++;
+            }
+            else
+            {
+                break;
+            }
+        }
+        
+        int totalOperationsNeeded = (s.Length - commonLength) + (t.Length - commonLength);
+        
+        if(totalOperationsNeeded > k)
+        {
+            return "No";
+        }
+        else if((k - totalOperationsNeeded) % 2 == 0)
+        {
+           return "Yes";
+        }
+        else if(k > (s.Length + t.Length))
+        {
+            return "Yes";
+        }
+        else
+        {
+            return "No";
+        }
+    }
+
+}
+
+******************************************
+
+
+Watson likes to challenge Sherlock's math ability. He will provide a starting and ending value that describe a range of integers, inclusive of the endpoints. Sherlock must determine the number of square integers within that range.
+
+Note: A square integer is an integer which is the square of an integer, e.g. .,4,9,16,25
+
+Example
+a = 24
+b = 49
+
+There are three square integers in the range: 25,36 and 49. Return 3.
+---------
+
+
+ 
+     * Complete the 'squares' function below.
+     *
+     * The function is expected to return an INTEGER.
+     * The function accepts following parameters:
+     *  1. INTEGER a
+     *  2. INTEGER b
+ 
+
+    public static int squares(int a, int b)
+    {
+        var lower = (int) Math.Ceiling((Math.Sqrt(a)));
+        var upper = (int) Math.Floor((Math.Sqrt(b)));
+        
+        int totalSqrts = (upper - lower)  + 1;
+        return totalSqrts;
+        
+    }
+
+
+**********************************************
+educe a string of lowercase characters in range ascii[‘a’..’z’]by doing a series of operations. In each operation, select a pair of adjacent letters that match, and delete them.
+
+Delete as many characters as possible using this method and return the resulting string. If the final string is empty, return Empty String
+
+Example.
+s = 'aab'
+
+aab shortens to b in one operation: remove the adjacent a characters.
+
+s = 'abba'
+Remove the two 'b' characters leaving 'aa'. Remove the two 'a' characters to leave ''. Return 'Empty String'.
+
+public static string superReducedString(string s)
+    {
+        Stack<char> stack = new Stack<char>();
+        foreach(var c in s)
+        {
+            if(stack.Count > 0 && stack.Peek() == c)
+            {
+                stack.Pop();
+            }
+            else
+            {
+                stack.Push(c);
+            }
+        }
+        
+        string result = new string(stack.Reverse().ToArray());
+        return string.IsNullOrEmpty(result) ? "Empty String" : result;
+    }
+
+
+***************************************************
+
+
+
+
+*/
